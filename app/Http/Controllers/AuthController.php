@@ -29,6 +29,9 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'adress' => $request->adress,
+
         ]);
 
         return redirect()->route('login.index');

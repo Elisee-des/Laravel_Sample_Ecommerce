@@ -87,6 +87,24 @@
                     </div>
 
                     <div class="col-12">
+                      <label for="yourPhone" class="form-label">Votre Telephone</label>
+                      <input type="phone" name="phone" class="form-control" id="yourPhone" @error('password')is-invalid @enderror>
+                      {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
+                      @error('phone')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourAdress" class="form-label">Votre Adress</label>
+                      <input type="adress" name="adress" class="form-control" id="yourAdress" @error('password')is-invalid @enderror>
+                      {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
+                      @error('adress')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
+                    </div>
+
+                    <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Creation de compte</button>
                     </div>
                     <div class="col-12">

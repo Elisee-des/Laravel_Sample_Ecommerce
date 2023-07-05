@@ -37,7 +37,7 @@
             </div>
 
             <div class="sb-sidenav-menu-heading">Personnel</div>
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route("profil") }}">
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-address-card"></i></div>
                 Mon Profil
             </a>
