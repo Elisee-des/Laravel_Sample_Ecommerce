@@ -41,7 +41,7 @@
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-address-card"></i></div>
                 Mon Profil
             </a>
-            <a class="nav-link collapsed" href="#" >
+            <a class="nav-link collapsed" href="{{ route("profil.parametre") }}" >
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-sliders"></i></div>
                 Paramètre
             </a>

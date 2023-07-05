@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::controller(AuthController::class)->group(function() {
     Route::get('register', 'register')->name("register.index");
     Route::post('register', 'registerSave')->name("register.save");
@@ -26,7 +27,9 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('login', 'login')->name("login.index");
     Route::post('login', 'loginAction')->name("login.action");
 
+    Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
+
 
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', function () {
@@ -35,6 +38,8 @@ Route::middleware('auth')->group(function() {
 
 
     Route::get('mon-profil', [UserController::class, 'profil'])->name('profil');
+    Route::get('parametre-profile', [UserController::class, 'profilParametre'])->name('profil.parametre');
+    Route::put('parametre-profil-edition', [UserController::class, 'profilEdition'])->name('profil.edition');
 
 });
 

@@ -23,7 +23,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tableau de bord</h1>
+                        <h1 class="mt-4">@yield('soustitre')</h1>
                         @yield('contents')
                     </div>
                 </main>

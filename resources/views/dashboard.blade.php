@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Panel Admin')
+@section('title', "Tableau de bord - Panneau d'administration")
+
+@section("soustitre", "Tableau de bord")
 
 @section('contents')
 <ol class="breadcrumb mb-4">

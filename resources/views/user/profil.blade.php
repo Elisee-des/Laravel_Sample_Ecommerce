@@ -2,6 +2,8 @@
 
 @section('title', 'Mon profil')
 
+@section("soustitre", "Paramètre")
+
 @section('contents')
 <section style="background-color: #eee;">
     <div class="container py-5">
@@ -26,7 +28,7 @@
               <p class="text-muted mb-1">{{ auth()->user()->profession }}</p>
               <p class="text-muted mb-4">{{ auth()->user()->adress }}</p>
               <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-outline-primary ms-1">Modifier mon profil</button>
+                <a href="{{ route("profil.parametre") }}" type="button" class="btn btn-outline-primary ms-1">Modifier mon profil</a>
               </div>
             </div>
           </div>
