@@ -56,30 +56,41 @@
                     <h5 class="card-title text-center pb-0 fs-4">Creation de compte</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" action="{{ route("register.save") }}" method="POST" novalidate>
+                    @csrf
+                    
                     <div class="col-12">
                       <label for="yourName" class="form-label">Votre Nom</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Nom Obligatoire</div>
+                      <input type="text" name="name" class="form-control" id="yourName" @error('name')is-invalid @enderror>
+                      {{-- <div class="invalid-feedback">Nom Obligatoire</div> --}}
+                      @error('name')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Votre Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Email obligatoire</div>
+                      <input type="email" name="email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror>
+                      {{-- <div class="invalid-feedback">Email obligatoire</div> --}}
+                      @error('email')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Votre Mot De Passe</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Mot de passe Obligatoire</div>
+                      <input type="password" name="password" class="form-control" id="yourPassword" @error('password')is-invalid @enderror>
+                      {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
+                      @error('password')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Creation de compte</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Avez-vous deja un compte? <a href="{{ route("login") }}">Connexion</a></p>
+                      <p class="small mb-0">Avez-vous deja un compte? <a href="{{ route("login.index") }}">Connexion</a></p>
                     </div>
                   </form>
 

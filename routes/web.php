@@ -18,5 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', [AuthController::class, "register"])->name("register");
-Route::get('/login', [AuthController::class, "login"])->name("login");
+Route::controller(AuthController::class)->group(function() {
+    Route::get('register', 'register')->name("register.index");
+    Route::post('register', 'registerSave')->name("register.save");
+
+    Route::get('login', 'login')->name("login.index");
+
+});

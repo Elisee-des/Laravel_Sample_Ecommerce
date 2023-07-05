@@ -73,7 +73,7 @@
                       <button class="btn btn-primary w-100" type="submit">Connexion</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Vous n'avez pas de compte? <a href="{{ route("register") }}">S'incrire</a></p>
+                      <p class="small mb-0">Vous n'avez pas de compte? <a href="{{ route("register.index") }}">S'incrire</a></p>
                     </div>
                   </form>
 
