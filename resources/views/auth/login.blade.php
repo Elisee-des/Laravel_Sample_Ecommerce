@@ -56,17 +56,24 @@
                     <h5 class="card-title text-center pb-0 fs-4">Connexion</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" method="post" action="{{ route("login.action") }}" novalidate>
+                    @csrf
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Votre Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Email obligatoire</div>
+                      <input type="email" name="email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror required >
+                      {{-- <div class="invalid-feedback">Email obligatoire</div> --}}
+                      @error('email')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Votre Mot De Passe</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Mot de passe Obligatoire</div>
+                      <input type="password" name="password" class="form-control" id="yourPassword" @error('password')is-invalid @enderror required>
+                      {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
+                      @error('password')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                      @enderror
                     </div>
 
                     <div class="col-12">
