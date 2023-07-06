@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function() {
     Route::get('mon-profil', [UserController::class, 'profil'])->name('profil');
     Route::get('parametre-profile', [UserController::class, 'profilParametre'])->name('profil.parametre');
     Route::put('parametre-profil-edition', [UserController::class, 'profilEdition'])->name('profil.edition');
+    Route::put('edition-mot-de-passe', [UserController::class, 'passwordEdit'])->name('edition.password');
 
 });
 

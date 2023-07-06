@@ -58,6 +58,15 @@
 
                   <form class="row g-3 needs-validation" action="{{ route("register.save") }}" method="POST" novalidate>
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>                                            
+                    @endif
                     
                     <div class="col-12">
                       <label for="yourName" class="form-label">Votre Nom</label>

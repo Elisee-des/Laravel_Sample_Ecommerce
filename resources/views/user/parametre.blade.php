@@ -6,6 +6,30 @@
 
 @section('contents')
 <br><br>
+
+<section style="background-color: #eee;">
+  <section class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editer du compte</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    @if (Session::has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('success') }}</div>       
+    @endif
+
+    @if (Session::has('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ Session::get('error') }}</div>       
+    @endif
+
 <div class="card p-3">
   <form action="{{ route("profil.edition") }}" method="POST">
     @csrf
@@ -58,11 +82,21 @@
       <form action="" method="POST">
         @csrf
         @method('PUT')
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>                                            
+        @endif
     
             <div class="row">
-              <div class="col-7 mb-3">
+              <div class="col-12 mb-3">
                 <label for="" class="form-label">Image</label>
-                <input type="file" name="image" class="form-control" placeholder="Changer votre image de profil" value="">
+                <input type="file" name="image" class="form-control" @error('image')is-invalid @enderror placeholder="Changer votre image de profil" value="">
               </div>
             </div>
 
@@ -81,20 +115,35 @@
   <h4>Changer votre mot de passe</h4>
 
     <div class="card p-3">
-      <form action="" method="POST">
+      <form action="{{ route("edition.password") }}" method="POST">
         @csrf
         @method('PUT')
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>                                            
+        @endif
     
             <div class="row">
               <div class="col-7 mb-3">
                 <div class="mb-2">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="text" name="password" id="password" class="form-control" placeholder="Mot de passe" value="">
+                    <input type="text" name="password" @error('password')is-invalid @enderror id="password" class="form-control" placeholder="Mot de passe" value="">
+                    @error('password')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
   
                 <div class="mb-2">
                   <label for="repeatPassword" class="form-label">Répétez Votre Mot de passe</label>
-                  <input type="text" name="repeatPassword" id="repeatPassword" class="form-control" placeholder="Répétez Votre Mot de passe" value="">
+                  <input type="text" name="repeatPassword" id="repeatPassword" @error('repeatPassword')is-invalid @enderror class="form-control" placeholder="Répétez Votre Mot de passe" value="">
+                  @error('repeatPassword')
+                          <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
               </div>
             </div>
@@ -103,11 +152,13 @@
               <div class="d-gird text-left">
                   <button class=" text-left btn btn-primary">Editer le mot de passe</button>
               </div>
-          </div>
+            </div>
     
       </form>
     </div>
   </div>
  </div>
 </div>
+</section>
+
 @endsection

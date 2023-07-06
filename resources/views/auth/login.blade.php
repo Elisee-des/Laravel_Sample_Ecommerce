@@ -58,6 +58,15 @@
 
                   <form class="row g-3 needs-validation" method="post" action="{{ route("login.action") }}" novalidate>
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>                                            
+                    @endif
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Votre Email</label>
                       <input type="email" name="email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror required >
