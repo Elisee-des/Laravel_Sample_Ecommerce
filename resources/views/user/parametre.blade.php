@@ -79,24 +79,28 @@
     <div class="col-6">
     <h4>Changer votre image de profil</h4>
     <div class="card p-3">
-      <form action="" method="POST">
-        @csrf
-        @method('PUT')
+      <form action="{{ route("edition.image") }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          @method('PUT')
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>                                            
-        @endif
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>                                            
+          @endif
     
             <div class="row">
               <div class="col-12 mb-3">
                 <label for="" class="form-label">Image</label>
-                <input type="file" name="image" class="form-control" @error('image')is-invalid @enderror placeholder="Changer votre image de profil" value="">
+                <input name="image" type="file" id="input-file" class="form-control m-2">
+
+                @error('image')
+                      <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
               </div>
             </div>
 
