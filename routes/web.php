@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function() {
         Route::put('/edit/password/{id}', [UsersController::class, 'updatePassword'])->name('user.password.update');
         Route::get('/show/{id}', [UsersController::class, 'show'])->name('user.show');
         Route::get('/delete/{id}', [UsersController::class, 'destroy'])->name('user.delete');
+        Route::get('/search/user', [UsersController::class, 'searchUsers'])->name('search.users');
     });
 
 });

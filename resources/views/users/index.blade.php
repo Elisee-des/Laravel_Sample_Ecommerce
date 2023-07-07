@@ -11,35 +11,41 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
+            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Liste des utilisateurs</li>
           </ol>
         </nav>
       </div>
     </div>
 
-    {{-- @if (Session::has('success'))
-    <div class="alert alert-success" role="alert">
-      {{ Session::get('success') }}</div>
-    @endif
-
-    @if (Session::has('error'))
-    <div class="alert alert-danger" role="alert">
-      {{ Session::get('error') }}</div>
-    @endif --}}
-
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Liste des utilisateurs</h1>
-        <a href="{{ route("user.create") }}" class="btn btn-primary">Ajouter un client</a>
+        <h1 class="mb-0">Liste des clients</h1>
+        <div>
+          <a href="" class="btn btn-warning">Importer</a>
+          <a href="" class="btn btn-dark">Exporter</a>
+          <a href="{{ route("user.create") }}" class="btn btn-primary">Ajouter un client</a>
+        </div>
       </div>
       <hr>
       
       <div class="container">
       <br>
-        <div class="card p-3">
+        <div class="card p-0">
           <div class="card-body">
-            <div class="table-responsive">
+
+          <form action="{{ route("search.users") }}" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
+              <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." name="query" value="" />
+                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+          </form>
+          
+          <div class="table-responsive">
+            
+            <br>
+            @if (isset($users))
+                
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -71,12 +77,18 @@
       
                       @else
                           <tr>
-                              <td class="text-center" colspan="5">user not found</td>
+                              <td class="text-center" colspan="5">Aucun utilisateur trouvé</td>
                           </tr>
-                      
+                      @endif
+                      </tbody>
+                  </table>
+                  
+                  <div class="pagination-block">
+                   {{-- {{  $users->links('layouts.paginationlinks')  }} --}}
+                   {{-- {{  $users->links()  }} --}}
+                  </div>
                   @endif
-                    </tbody>
-                </table>
+              
             </div>
         </div>
         </div>

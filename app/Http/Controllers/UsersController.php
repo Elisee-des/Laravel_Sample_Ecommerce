@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -218,4 +219,27 @@ class UsersController extends Controller
         return redirect()->route('user.index')->with('success', "Client supprimé avec succes");
 
     }
+
+
+    public function searchUsers(Request $request)
+    {
+        if ($request->has('query')) {
+            $search_text = $request->input('query');
+            $users = DB::table('users')
+            ->where('name', 'LIKE', '%'.$search_text.'%')
+            ->orWhere('email', 'LIKE', '%'.$search_text.'%')
+            ->orWhere('phone', 'LIKE', '%'.$search_text.'%')
+            ->orWhere('profession', 'LIKE', '%'.$search_text.'%')
+            ->paginate(10);
+            $users->appends($request->all());
+    
+            return view("users.index", compact("users"));
+        } else {
+           
+            return view("users.index"); 
+        }
+    }
+    
+
+
 }
