@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/list', [UsersController::class, 'index'])->name('user.index');
         Route::get('/create', [UsersController::class, 'create'])->name('user.create');
         Route::post('/create', [UsersController::class, 'store'])->name('user.store');
+        Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
+        Route::put('/edit/{id}', [UsersController::class, 'update'])->name('user.update');
     });
 
 });

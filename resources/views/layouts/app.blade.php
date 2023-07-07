@@ -65,7 +65,7 @@
         <script src="{{ asset("assets/js/datatables-simple-demo.js") }}"></script>
         @if (Session::has('success'))
         <script>
-            swal("Client creé avec succes", "{!! Session::get('success') !!}", "success", {
+            swal("{!! Session::get('success') !!}", "", "success", {
                 button:"Fermer"
             })
         </script>

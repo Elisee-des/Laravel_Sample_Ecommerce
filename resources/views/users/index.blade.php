@@ -62,7 +62,7 @@
                               <td>
                                   <div class="btn-group" role="group">
                                       <a href="" class="btn btn-outline-primary">Détail</a>
-                                      <a href="" class="btn btn-outline-dark">Editer</a>
+                                      <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-dark">Editer</a>
                                       <a href="" class="btn btn-outline-danger">Supprimer</a>
                                   </div>
                               </td>
