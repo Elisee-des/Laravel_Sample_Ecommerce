@@ -109,9 +109,11 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return view("users.show", compact('user'));
     }
 
     /**
@@ -140,7 +142,7 @@ class UsersController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('user.index')->with('success', "Profil edité avec succes");
+        return redirect()->route('user.show', $id)->with('success', "Profil edité avec succes");
     }
 
     public function updatePassword(Request $request, $id)
@@ -167,7 +169,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.index')->with('success', "Mot de passe edité avec succes");
+        return redirect()->route('user.show', $id)->with('success', "Mot de passe edité avec succes");
     }
 
     public function updateImage(Request $request, $id)
@@ -198,7 +200,7 @@ class UsersController extends Controller
         
         $user->save();
 
-        return redirect()->route("user.index")->with('success', "Image modifié avec succes");
+        return redirect()->route('user.show', $id)->with('success', "Image modifié avec succes");
     }
 
     /**
@@ -207,8 +209,13 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        
+        $user->delete();
+
+        return redirect()->route('user.index')->with('success', "Client supprimé avec succes");
+
     }
 }

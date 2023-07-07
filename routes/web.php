@@ -49,9 +49,11 @@ Route::middleware('auth')->group(function() {
         Route::get('/create', [UsersController::class, 'create'])->name('user.create');
         Route::post('/create', [UsersController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
-        Route::put('/edit/{id}', [UsersController::class, 'update'])->name('user.update');
+        Route::put('/edit/profil/{id}', [UsersController::class, 'update'])->name('user.update');
         Route::put('/edit/image/{id}', [UsersController::class, 'updateImage'])->name('user.image.update');
         Route::put('/edit/password/{id}', [UsersController::class, 'updatePassword'])->name('user.password.update');
+        Route::get('/show/{id}', [UsersController::class, 'show'])->name('user.show');
+        Route::get('/delete/{id}', [UsersController::class, 'destroy'])->name('user.delete');
     });
 
 });

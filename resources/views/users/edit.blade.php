@@ -15,14 +15,14 @@
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route("user.index") }}">Liste</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edition de profil</li>
+            <li class="breadcrumb-item active" aria-current="page">Edition du profil de {{ $user->name }}</li>
           </ol>
         </nav>
       </div>
     </div>
 
 <div class="card p-3">
-  <form action="{{ route("user.edit", $user->id ) }}" method="POST">
+  <form action="{{ route("user.update", $user->id ) }}" method="POST">
     @csrf
     @method('PUT')
 
