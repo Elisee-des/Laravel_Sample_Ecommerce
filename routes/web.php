@@ -45,7 +45,9 @@ Route::middleware('auth')->group(function() {
     Route::put('edition-image', [UserController::class, 'imageEdit'])->name('edition.image');
 
     Route::prefix('user')->group(function () {
-        Route::get('/list', [UsersController::class, 'index'])->name('users.index');
+        Route::get('/list', [UsersController::class, 'index'])->name('user.index');
+        Route::get('/create', [UsersController::class, 'create'])->name('user.create');
+        Route::post('/create', [UsersController::class, 'store'])->name('user.store');
     });
 
 });

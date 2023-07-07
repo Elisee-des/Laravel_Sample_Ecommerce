@@ -31,7 +31,7 @@
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
         <h1 class="mb-0">Liste des utilisateurs</h1>
-        <a href="" class="btn btn-primary">Ajouter un client</a>
+        <a href="{{ route("user.create") }}" class="btn btn-primary">Ajouter un client</a>
       </div>
       <hr>
       

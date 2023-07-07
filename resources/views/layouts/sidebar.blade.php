@@ -32,7 +32,7 @@
                 data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="layout-static.html">Aministrateurs</a>
-                    <a class="nav-link" href="{{ route("users.index") }}">Clients</a>
+                    <a class="nav-link" href="{{ route("user.index") }}">Clients</a>
                 </nav>
             </div>
 
