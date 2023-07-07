@@ -114,7 +114,7 @@
   <h4>Changer votre mot de passe</h4>
 
     <div class="card p-3">
-      <form action="{{ route("edition.password") }}" method="POST">
+      <form action="{{ route("user.password.update", $user->id ) }}" method="POST">
         @csrf
         @method('PUT')
         @if ($errors->any())

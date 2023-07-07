@@ -143,6 +143,34 @@ class UsersController extends Controller
         return redirect()->route('user.index')->with('success', "Profil edité avec succes");
     }
 
+    public function updatePassword(Request $request, $id)
+    {
+        
+        $user = User::find($id);
+
+        Validator::make($request->all(), [
+            "password" => "required",
+            "repeatPassword" => "required",
+        ])->validate();
+
+        if ($request->password != $request->repeatPassword)
+        {
+            return redirect()->route("user.edit", $id)->with('error', "Le mot de passe n'ai pas indentique");
+        }
+
+        $newPaswword = $request->password;
+
+        $hashPassword = Hash::make($newPaswword);
+
+        $user->update([
+            "password" => $hashPassword
+        ]);
+
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', "Mot de passe edité avec succes");
+    }
+
     /**
      * Remove the specified resource from storage.
      *
