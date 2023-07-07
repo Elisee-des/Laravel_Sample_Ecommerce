@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/show/{id}', [UsersController::class, 'show'])->name('user.show');
         Route::get('/delete/{id}', [UsersController::class, 'destroy'])->name('user.delete');
         Route::get('/search/user', [UsersController::class, 'searchUsers'])->name('search.users');
+        Route::get('/import', [UsersController::class, 'importIndex'])->name('users.import.index');
+        Route::get('/users-export', [UsersController::class, 'export'])->name('users.export');
+        Route::post('/users-import', [UsersController::class, 'import'])->name('users.import');
     });
 
 });
