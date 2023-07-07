@@ -145,7 +145,6 @@ class UsersController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
-        
         $user = User::find($id);
 
         Validator::make($request->all(), [
@@ -169,6 +168,37 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()->route('user.index')->with('success', "Mot de passe edité avec succes");
+    }
+
+    public function updateImage(Request $request, $id)
+    {
+        
+        $user = User::find($id);
+        
+        $input = $request->file('image');
+
+        Validator::validate($request->all(), [
+            'image' => [
+                    'required',                
+                    File::image()
+                    ->min(102)
+                    ->max(12 * 1024)
+                    ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
+            ],
+        ]);
+
+
+        $file = $request->file("image");
+        $imageName = time().'_'.$file->getClientOriginalName();
+        $file->move(\public_path("images/"), $imageName);
+            
+        $user->update([
+            "image" => $imageName
+        ]);
+        
+        $user->save();
+
+        return redirect()->route("user.index")->with('success', "Image modifié avec succes");
     }
 
     /**

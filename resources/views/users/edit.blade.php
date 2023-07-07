@@ -72,9 +72,9 @@
   
   <div class="row">
     <div class="col-6">
-    <h4>Changer votre image de profil</h4>
+    <h4>Changer l'image de profil</h4>
     <div class="card p-3">
-      <form action="{{ route("edition.image") }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route("user.image.update",$user->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
 
@@ -111,10 +111,10 @@
 
   <div class="col-6">
 
-  <h4>Changer votre mot de passe</h4>
+  <h4>Changer le mot de passe</h4>
 
     <div class="card p-3">
-      <form action="{{ route("user.password.update", $user->id ) }}" method="POST">
+      <form action="{{ route("user.password.update", $user->id) }}" method="POST">
         @csrf
         @method('PUT')
         @if ($errors->any())
