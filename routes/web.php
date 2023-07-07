@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,10 @@ Route::middleware('auth')->group(function() {
     Route::put('parametre-profil-edition', [UserController::class, 'profilEdition'])->name('profil.edition');
     Route::put('edition-mot-de-passe', [UserController::class, 'passwordEdit'])->name('edition.password');
     Route::put('edition-image', [UserController::class, 'imageEdit'])->name('edition.image');
+
+    Route::prefix('user')->group(function () {
+        Route::get('/list', [UsersController::class, 'index'])->name('users.index');
+    });
 
 });
 
