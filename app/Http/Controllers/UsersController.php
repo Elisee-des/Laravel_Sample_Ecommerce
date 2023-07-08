@@ -234,7 +234,6 @@ class UsersController extends Controller
             ->orWhere('phone', 'LIKE', '%'.$search_text.'%')
             ->orWhere('profession', 'LIKE', '%'.$search_text.'%')
             ->paginate(10);
-            $users->appends($request->all());
     
             return view("users.index", compact("users"));
         } else {
