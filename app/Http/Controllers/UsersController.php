@@ -87,6 +87,7 @@ class UsersController extends Controller
             $user->save();
 
             return redirect()->route('user.index')->with('success', "Client creér avec succes");
+        
         }
 
         $file = 'Aucune image enregistré';

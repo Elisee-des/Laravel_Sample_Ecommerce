@@ -21,16 +21,6 @@
       </div>
     </div>
 
-    @if (Session::has('success'))
-    <div class="alert alert-success" role="alert">
-      {{ Session::get('success') }}</div>
-    @endif
-
-    @if (Session::has('error'))
-    <div class="alert alert-danger" role="alert">
-      {{ Session::get('error') }}</div>
-    @endif
-
     <div class="card p-3">
       <form action="{{ route("user.store") }}" method="POST" enctype="multipart/form-data">
         @csrf

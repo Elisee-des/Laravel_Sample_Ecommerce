@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,12 @@ Route::middleware('auth')->group(function() {
         Route::get('/import', [UsersController::class, 'importIndex'])->name('users.import.index');
         Route::get('/users-export', [UsersController::class, 'export'])->name('users.export');
         Route::post('/users-import', [UsersController::class, 'import'])->name('users.import');
+    });
+
+    Route::prefix('categorie')->group(function () {
+        Route::get('/list', [CategorieController::class, 'index'])->name('categorie.index');
+        Route::get('/create', [CategorieController::class, 'create'])->name('categorie.create');
+        Route::post('/store', [CategorieController::class, 'store'])->name('categorie.store');
     });
 
 });

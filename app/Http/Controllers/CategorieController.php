@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCategorieRequest;
-use App\Http\Requests\UpdateCategorieRequest;
 use App\Models\Categorie;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategorieController extends Controller
 {
@@ -15,7 +16,9 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+
+        return view("categorie/index", compact("categories"));
     }
 
     /**
@@ -25,7 +28,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorie.create');
     }
 
     /**
@@ -34,9 +37,19 @@ class CategorieController extends Controller
      * @param  \App\Http\Requests\StoreCategorieRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategorieRequest $request)
+    public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required',
+        ]
+        );
+        
+        Categorie::create([
+            'name' => $request->name,
+        ]);
+        
+        return redirect()->route("categorie.index")->with('success', "Categorie creé avec succes");
+    
     }
 
     /**
