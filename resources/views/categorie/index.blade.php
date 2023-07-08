@@ -59,8 +59,7 @@
                               <td>{{ $categorie->name }}</td>
                               <td>
                                   <div class="btn-group" role="group">
-                                      <a href="" class="btn btn-outline-primary">Détail</a>
-                                      <a href="" class="btn btn-outline-dark">Editer</a>
+                                      <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-dark">Editer</a>
                                       <a href="" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">Supprimer</a>
                                   </div>
                               </td>

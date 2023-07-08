@@ -58,9 +58,11 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show($id)
     {
-        //
+        dd($id);
+
+        return view('categorie.show');
     }
 
     /**
@@ -69,9 +71,11 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit($id)
     {
-        //
+        $categorie = Categorie::find($id);
+
+        return view("categorie.edit", compact("categorie"));
     }
 
     /**
@@ -81,9 +85,22 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategorieRequest $request, Categorie $categorie)
+    public function update(Request $request, $id)
     {
-        //
+        $categorie = Categorie::find($id);
+
+
+        Validator::make($request->all(), [
+            'name' => 'required',
+        ]
+        );
+        
+        $categorie->update([
+            'name' => $request->name
+        ]);
+        
+        return redirect()->route("categorie.index")->with('success', "Categorie mise a jour");
+    
     }
 
     /**
