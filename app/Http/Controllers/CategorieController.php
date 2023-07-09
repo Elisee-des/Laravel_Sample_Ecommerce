@@ -109,8 +109,13 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $categorie)
+    public function destroy($id)
     {
-        //
+        $categorie = Categorie::findOrFail($id);
+
+        $categorie->delete();
+
+        return redirect()->route("categorie.index")->with('success', "Categorie supprimer avec success");
+
     }
 }

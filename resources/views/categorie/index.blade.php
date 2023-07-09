@@ -60,8 +60,12 @@
                               <td>
                                   <div class="btn-group" role="group">
                                       <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-dark">Editer</a>
-                                      <a href="" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">Supprimer</a>
-                                  </div>
+                                      <form action="{{ route("categorie.destroy", $categorie->id  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                      </form>
+1                                  </div>
                               </td>
                           </tr>
                       @endforeach

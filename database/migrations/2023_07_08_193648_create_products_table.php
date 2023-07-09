@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("prix");
             $table->string("description");
             $table->string("image")->nullable(true);
-            $table->foreignId('categorie_id')->constrained();
+            $table->foreignId('categorie_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });
     }
