@@ -11,8 +11,8 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>/
-            <li class="breadgitcrumb-item"><a href="{{ route("categorie.index") }}">Liste des products</a></li>/
+            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
+            <li class="breadgitcrumb-item"><a href="{{ route("categorie.index") }}">Liste des products</a></li>
             <li class="breadcrumb-item active" aria-current="page">Liste product</li>
           </ol>
         </nav>
@@ -57,14 +57,13 @@
                               <td>{{ $product->description }}</td>
                               <td>
                                   <div class="btn-group" role="group">
-                                      <button class="btn btn-outline-dark"><a href="{{ route("categorie.edit", $product->id) }}" class="btn">Editer</a></button>
-                                      <form action="{{ route("categorie.destroy", $product->id  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
+                                      <button class="btn btn-outline-dark"><a href="{{ route("product.edit", ["idCat" => $categorie->id, "id" => $product->id]) }}" class="btn">Editer</a></button>
+                                      <form action="{{ route("product.delete", ["idCat" => $categorie->id, "id" => $product->id]  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Delete</button>
                                       </form>
                                       <button class="btn btn-outline-warning"><a href="{{ route("categorie.edit", $product->id) }}" class="btn">Detail</a></button>
-
                                   </div>
                               </td>
                           </tr>

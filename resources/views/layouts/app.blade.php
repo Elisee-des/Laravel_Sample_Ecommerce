@@ -73,7 +73,7 @@
 
         @if (Session::has('error'))
         <script>
-            swal("Error de creation du client", "{!! Session::get('error') !!}", "error", {
+            swal("Message", "{!! Session::get('error') !!}", "error", {
                 button:"Fermer"
             })
         </script>

@@ -93,7 +93,7 @@ class CategorieController extends Controller
 
         Validator::make($request->all(), [
             'name' => 'required',
-        ]
+            ]
         );
         
         $categorie->update([

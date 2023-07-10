@@ -43,8 +43,6 @@ class ProductController extends Controller
     public function store(Request $request, $id)
     {
 
-        $categorie = Categorie::find($id);
-
         Validator::make($request->all(), [
             'name' => 'required',
             'prix' => 'required',
@@ -57,10 +55,16 @@ class ProductController extends Controller
                 ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
                 ],
             ]
-        );
+        )->validate();
         
         $file = $request->file("image");
+        
+        if ($file == '') {
+            return redirect()->route("categorie.show.products", $id)->with('error', "Le produit doit avoir une image");
+        }
+
         $imageName = time().'_'.$file->getClientOriginalName();
+
         $file->move(\public_path("images/"), $imageName);
         
         $product = Product::create([
@@ -92,9 +96,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($idCat, $id)
     {
-        //
+        $categorie = Categorie::find($idCat);
+        $product = Product::find($id);
+
+        return view("product.edit", compact("categorie", "product"));
     }
 
     /**
@@ -104,9 +111,37 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, $idCat, $id)
     {
-        //
+        $product = Product::find($id);
+        $productImage = $product->image;
+
+        $file = $request->file("image");
+        
+        if ($file != '') {
+            $imageName = time().'_'.$file->getClientOriginalName();
+    
+            $file->move(\public_path("images/"), $imageName);
+
+
+            $product->update([
+                'name' => $request->name,
+                'prix' => $request->prix,
+                'description' => $request->description,
+                'image' => $imageName,
+            ]);
+
+            return redirect()->route("categorie.show.products", $idCat)->with('success', "Produit edité avec success");
+        }
+
+            $product->update([
+                'name' => $request->name,
+                'prix' => $request->prix,
+                'description' => $request->description,
+                'image' => $productImage,
+            ]);
+
+            return redirect()->route("categorie.show.products", $idCat)->with('success', "Produit edité avec success");
     }
 
     /**
@@ -115,8 +150,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($idCat, $id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return redirect()->route("categorie.show.products", $idCat)->with('success', "Produit supprimer avec success");
     }
 }
