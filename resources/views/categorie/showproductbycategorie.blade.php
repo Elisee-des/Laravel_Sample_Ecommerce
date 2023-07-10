@@ -11,8 +11,8 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
-            <li class="breadgitcrumb-item"><a href="{{ route("categorie.index") }}">Liste des products</a></li>
+            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>/
+            <li class="breadgitcrumb-item"><a href="{{ route("categorie.index") }}">Liste des products</a></li>/
             <li class="breadcrumb-item active" aria-current="page">Liste product</li>
           </ol>
         </nav>
@@ -63,7 +63,7 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Delete</button>
                                       </form>
-                                      <button class="btn btn-outline-warning"><a href="{{ route("categorie.edit", $product->id) }}" class="btn">Detail</a></button>
+                                      <button class="btn btn-outline-warning"><a href="{{ route("product.show", ["idCat" => $categorie->id, "id" => $product->id]) }}" class="btn">Detail</a></button>
                                   </div>
                               </td>
                           </tr>

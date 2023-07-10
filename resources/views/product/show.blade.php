@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', "Edition du produit $product->name")
+@section('title', "Detail du produit $product->name")
 
-@section("soustitre", "Edition du produit $product->name")
+@section("soustitre", "Detail du produit $product->name")
 
 @section('contents')
 <br><br>
@@ -39,33 +39,24 @@
         <div class="card p-3 mb-2">
             <div class="row">
               <div class="col-6">
-                <input type="text" name="name" @error('name')is-invalid @enderror class="form-control mb-2" placeholder="Nom du produit" value="{{ $product->name }}">
-                    @error('name')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                <input type="text" name="prix" @error('prix')is-invalid @enderror class="form-control mb-2" placeholder="Prix du produit" value="{{ $product->prix }}">
-                    @error('prix')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                <textarea type="text" name="description" @error('description')is-invalid @enderror class="form-control mb-2" placeholder="Description du produit" value="">{{ $product->description }}</textarea>
-                    @error('description')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                <input type="text" name="name"  class="form-control mb-2" placeholder="Nom du produit" value="{{ $product->name }}" readonly>
+                    
+                <input type="text" name="prix"  class="form-control mb-2" placeholder="Prix du produit" value="{{ $product->prix }}" readonly>
+                    
+                <textarea type="text" name="description"  class="form-control mb-2" placeholder="Description du produit" value="{{ $product->description }}" readonly>{{ $product->description }}</textarea>
+                   
             </div>
             <div class="col-6">
                 <input type="text" name="categorie_id" class="form-control mb-2" placeholder="" value="Categorie: {{ $categorie->name }}" readonly>
-                <label for="" class="form-label">Associer une image a ce produit</label>
-                <input type="file" name="image" @error('image')is-invalid @enderror class="form-control mb-2" placeholder="Image" value="">
-                  @error('image')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                  @enderror
-
+                <label for="" class="form-label">Image du produit</label>
+                <td><img src="/images/{{ $product->image }}" class="img-responsive" style="max-height:150px; max-width:150px" alt=""></td>
+                {{-- <input type="file" name="image"  class="form-control mb-2" placeholder="Image" value=""> --}}
               </div>
             </div>
         </div>
         <div class="row">
             <div class="d-gird text-center">
-              <button class=" text-center btn btn-primary">Editer le produit</button>
+              <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-primary">Retour</a>
             </div>
         </div>
       </form>
