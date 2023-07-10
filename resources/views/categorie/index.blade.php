@@ -11,7 +11,8 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
+            <li class="breadgitcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>/
+            <li class="breadgitcrumb-item"><a href="{{ route("categorie.index") }}">Liste des categories</a></li>/
             <li class="breadcrumb-item active" aria-current="page">Liste categorie</li>
           </ol>
         </nav>
@@ -32,12 +33,12 @@
         <div class="card p-0">
           <div class="card-body">
 
-          <form action="" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
+          {{-- <form action="" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
               <div class="input-group">
                   <input class="form-control" type="text" placeholder="Search for..." name="query" value="" />
                   <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
               </div>
-          </form>
+          </form> --}}
           
           <div class="table-responsive">
             
@@ -59,13 +60,14 @@
                               <td>{{ $categorie->name }}</td>
                               <td>
                                   <div class="btn-group" role="group">
-                                      <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-dark">Editer</a>
+                                      <button class="btn btn-outline-dark"><a href="{{ route("categorie.edit", $categorie->id) }}" class="btn">Editer</a></button>
                                       <form action="{{ route("categorie.destroy", $categorie->id  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
                                         @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        @method('GET')
+                                        <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Supprimer</button>
                                       </form>
-1                                  </div>
+                                      <button class="btn btn-outline-primary"><a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn">Produits</a></button>
+                                  </div>
                               </td>
                           </tr>
                       @endforeach

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/edit/{id}', [CategorieController::class, 'edit'])->name('categorie.edit');
         Route::put('/update/{id}', [CategorieController::class, 'update'])->name('categorie.update');
         Route::delete('/destroy/{id}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
+        Route::get('/show-product-by-categorie/{id}', [CategorieController::class, 'showProduitsByCategorie'])->name('categorie.show.products');
+        Route::get('/product/create/{id}', [ProductController::class, 'create'])->name('products.index');
+        Route::post('/product/create/{id}', [ProductController::class, 'store'])->name('product.create');
     });
 
 });

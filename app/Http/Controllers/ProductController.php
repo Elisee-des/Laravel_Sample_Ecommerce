@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Categorie;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class ProductController extends Controller
 {
@@ -15,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view();
     }
 
     /**
@@ -23,9 +27,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $categorie = Categorie::find($id);
+
+        return view("product.create", compact("categorie"));
     }
 
     /**
@@ -34,9 +40,39 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request, $id)
     {
-        //
+
+        $categorie = Categorie::find($id);
+
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'prix' => 'required',
+            'description' => 'required',
+            'image' => [
+                'required',                
+                File::image()
+                ->min(102)
+                ->max(12 * 1024)
+                ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
+                ],
+            ]
+        );
+        
+        $file = $request->file("image");
+        $imageName = time().'_'.$file->getClientOriginalName();
+        $file->move(\public_path("images/"), $imageName);
+        
+        $product = Product::create([
+            'name' => $request->name,
+            'prix' => $request->prix,
+            'description' => $request->description,
+            'image' => $imageName,
+            'categorie_id' => $id,
+        ]);
+
+        return redirect()->route("categorie.show.products", $id)->with('success', "Produit creé avec succes");
+    
     }
 
     /**

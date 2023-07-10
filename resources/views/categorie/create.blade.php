@@ -13,8 +13,8 @@
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route("user.index") }}">Liste</a></li>
+            <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>/
+            <li class="breadcrumb-item"><a href="{{ route("categorie.index") }}">Liste des categories</a></li>/
             <li class="breadcrumb-item active" aria-current="page">Ajout de categorie</li>
           </ol>
         </nav>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CategorieController extends Controller
@@ -117,5 +118,19 @@ class CategorieController extends Controller
 
         return redirect()->route("categorie.index")->with('success', "Categorie supprimer avec success");
 
+    }
+
+
+    public function showProduitsByCategorie($id)
+    {
+        $categorie = Categorie::find($id);
+
+        $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.categorie_id')
+                    ->select('products.*')
+                    ->where('categories.id', '=', $id)
+                    ->get();
+            
+        return view("categorie/showproductbycategorie", compact("products", "categorie"));
     }
 }
