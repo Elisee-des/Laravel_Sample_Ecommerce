@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
@@ -18,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name("home");
 
 
 Route::controller(AuthController::class)->group(function() {
@@ -35,9 +35,7 @@ Route::controller(AuthController::class)->group(function() {
 
 
 Route::middleware('auth')->group(function() {
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
     Route::get('mon-profil', [UserController::class, 'profil'])->name('profil');
@@ -75,8 +73,20 @@ Route::middleware('auth')->group(function() {
         Route::get('/product/edit/{idCat}/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('/product/update/{idCat}/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::get('/product/show/{idCat}/{id}', [ProductController::class, 'show'])->name('product.show');
+        Route::get('/product/search/{idCat}', [ProductController::class, 'searchProduct'])->name('product.search');
         Route::delete('/product/delete/{idCat}/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     });
+
+
+    Route::prefix('product')->group(function () {
+        Route::get('/index', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/create', [ProductController::class, 'createProduct'])->name('products.create.index');
+        Route::post('/store', [ProductController::class, 'storeProduct'])->name('products.store.index');
+        Route::get('/edit', [ProductController::class, 'editProduct'])->name('products.edit.index');
+        Route::put('/edit', [ProductController::class, 'updateProduct'])->name('products.upadte.index');
+        Route::delete('/delete', [ProductController::class, 'deleteProduct'])->name('products.delete.index');
+    });
+
 
 });
 
