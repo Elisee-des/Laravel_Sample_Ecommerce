@@ -5,7 +5,7 @@
 @section("soustitre", "Gestion des categories")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="background-color: ;">
   <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -23,7 +23,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <h1 class="mb-0"></h1>
         <div>
-          <a href="{{ route("categorie.create") }}" class="btn btn-primary">Ajouter une categorie</a>
+          <a href="{{ route("categorie.create") }}" class="btn btn-primary"><i class="fa-sharp fa-plus"></i> Ajouter une categorie</a>
         </div>
       </div>
       {{-- <hr> --}}
@@ -107,8 +107,8 @@
                     <tr>
                       <td>{{ $categorie->name }}</td>
                       <td class="pull-right">
-                        <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary">Editer</a>
-                        <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark">Detail</a>
+                        <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary"><i class="fa-sharp fa-pencil"></i> Editer</a>
+                        <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Detail</a>
 
                       </td>
                     </tr>

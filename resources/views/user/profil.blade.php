@@ -114,7 +114,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-center mb-2">
-            <a href="{{ route("profil.parametre") }}" type="button" class="btn btn-outline-primary ms-1">Editer mon compte</a>
+            <a href="{{ route("profil.parametre") }}" type="button" class="btn btn-outline-primary ms-1"><i class="fa-sharp fa-pencil"></i> Editer mon compte</a>
           </div>
         </div>
       </div>

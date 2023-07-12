@@ -5,9 +5,9 @@
 @section("soustitre", "Edition du profil de $user->name")
 
 @section('contents')
-<br><br>
 
-<section style="background-color: #eee;">
+
+<section style="background-color: ">
   <section class="container py-5">
     <div class="row">
       <div class="col">
@@ -58,7 +58,7 @@
 
     <div class="row">
         <div class="d-gird text-center">
-            <button class="text-center btn btn-primary">Editer mon profil</button>
+            <button class="text-center btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer mon profil</button>
         </div>
     </div>
 
@@ -73,7 +73,6 @@
   <div class="row">
     <div class="col-6">
     <h4>Changer l'image de profil</h4>
-    <div class="card p-3">
       <form action="{{ route("user.image.update",$user->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
@@ -88,32 +87,34 @@
               </div>                                            
           @endif
     
-            <div class="row">
-              <div class="col-12 mb-3">
-                <label for="" class="form-label">Image</label>
-                <input name="image" type="file" id="input-file" class="form-control m-2">
+            <div class="card p-3 mb-2">
 
-                @error('image')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <label for="" class="form-label">Image</label>
+                  <input name="image" type="file" id="input-file" class="form-control m-2">
+  
+                  @error('image')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
               </div>
+
             </div>
 
             <div class="row">
               <div class="d-gird text-left">
-                  <button class=" text-left btn btn-primary">Editer l'image</button>
+                  <button class=" text-left btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer l'image</button>
               </div>
           </div>
     
       </form>
-    </div>
   </div>
 
   <div class="col-6">
 
   <h4>Changer le mot de passe</h4>
 
-    <div class="card p-3">
       <form action="{{ route("user.password.update", $user->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -127,6 +128,8 @@
             </div>                                            
         @endif
     
+           <div class="card p-3 mb-2">
+
             <div class="row">
               <div class="col-7 mb-3">
                 <div class="mb-2">
@@ -147,14 +150,15 @@
               </div>
             </div>
 
+           </div>
+
             <div class="row">
               <div class="d-gird text-left">
-                  <button class=" text-left btn btn-primary">Editer le mot de passe</button>
+                  <button class=" text-left btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer le mot de passe</button>
               </div>
             </div>
     
       </form>
-    </div>
   </div>
  </div>
 </div>

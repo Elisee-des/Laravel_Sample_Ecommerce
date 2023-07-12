@@ -5,7 +5,7 @@
 @section("soustitre", "Gestion des utilisateurs")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="background-color:">
   <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -20,14 +20,14 @@
 
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Liste des clients</h1>
+        <h1 class="mb-0"></h1>
         <div>
-          <a href="{{ route("users.import.index") }}" class="btn btn-warning">Importer</a>
-          <a href="{{ route('users.export') }}" class="btn btn-dark">Exporter</a>
-          <a href="{{ route("user.create") }}" class="btn btn-primary">Ajouter un client</a>
+          <a href="{{ route("users.import.index") }}" class="btn btn-warning"><i class="fa-sharp fa-file-arrow-down"></i> Importer</a>
+          <a href="{{ route('users.export') }}" class="btn btn-dark"><i class="fa-sharp fa-file-import"></i> Exporter</a>
+          <a href="{{ route("user.create") }}" class="btn btn-primary"><i class="fa-sharp fa-plus"></i>  Ajouter un client</a>
         </div>
       </div>
-      <hr>
+      {{-- <hr> --}}
 
       <div class="container">
         <br>
@@ -63,11 +63,11 @@
                   @foreach ($users as $user )
                   <tr>
                     <td>{{ $user->name }}</td>
-                    <td>
+                    <td class="text-center">
 
                       @if ( $user->image != '' )
                       <img src="/images/{{ $user->image }}" alt="avatar"
-                      class="rounded-circle img-fluid" style="width: 70px;">
+                      class="rounded-circle img-fluid" style="width: 30px;">
                       @else
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 30px;">
@@ -76,15 +76,11 @@
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    {{-- <td>{{ $user->profession }}</td> --}}
                     <td>
                       <div class="btn-group" role="group">
-                        <a href="{{ route("user.show", $user->id) }}" class="btn btn-outline-primary">Détail</a>
+                        <a href="{{ route("user.show", $user->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Détail</a>
                        
-                        <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-dark">Editer</a>
-                        {{-- <a href="{{ route("user.delete", $user->id) }}" class="btn btn-outline-danger"
-                          onclick="return
-                          confirm('Are you sure?')">Supprimer</a> --}}
+                        <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary"><i class="fa-sharp fa-pencil"></i> Editer</a>
                       </div>
                     </td>
                   </tr>

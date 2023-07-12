@@ -7,7 +7,7 @@
 @section('contents')
 <br><br>
 
-<section style="background-color: #eee;">
+<section style="background-color: ">
   <section class="container py-5">
     <div class="row">
       <div class="col">
@@ -53,7 +53,7 @@
 
     <div class="row">
         <div class="d-gird text-center">
-            <button class="text-center btn btn-primary">Editer mon profil</button>
+            <button class="text-center btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer mon profil</button>
         </div>
     </div>
 
@@ -97,7 +97,7 @@
 
             <div class="row">
               <div class="d-gird text-left">
-                  <button class=" text-left btn btn-primary">Editer l'image</button>
+                  <button class=" text-left btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer l'image</button>
               </div>
           </div>
     
@@ -146,7 +146,7 @@
 
             <div class="row">
               <div class="d-gird text-left">
-                  <button class=" text-left btn btn-primary">Editer le mot de passe</button>
+                  <button class=" text-left btn btn-primary"><i class="fa-sharp fa-pencil"></i> Editer le mot de passe</button>
               </div>
             </div>
     

@@ -5,7 +5,7 @@
 @section("soustitre", "Gestion des Produits")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="background-color: ">
   <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -20,7 +20,7 @@
 
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Liste des produits</h1>
+        <h1 class="mb-0"></h1>
         <div>
           {{-- <a href="{{ route("products.create.index") }}" class="btn btn-primary">Ajouter un produit</a> --}}
         </div>

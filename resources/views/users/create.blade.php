@@ -7,7 +7,7 @@
 @section('contents')
 <br><br>
 
-<section style="background-color: #eee;">
+<section style="background-color: ">
   <section class="container py-5">
     <div class="row">
       <div class="col">
@@ -112,7 +112,7 @@
         <br>
         <div class="row">
           <div class="d-gird text-center">
-            <button class=" text-center btn btn-primary">Creér le client</button>
+            <button class=" text-center btn btn-primary"><i class="fa-sharp fa-plus"></i> Creér le client</button>
           </div>
         </div>
       </form>

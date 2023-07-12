@@ -5,7 +5,7 @@
 @section("soustitre", "Detail de $user->name")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="background-color: ">
     <div class="container py-5">
       <div class="row">
         <div class="col">
@@ -118,8 +118,8 @@
 
           </div>
           <div class="d-flex justify-content-center mb-2">
-            <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary ms-1">Editer le compte</a>
-            <a href="{{ route("user.delete", $user->id) }}" class="btn btn-outline-danger ms-1" onclick="return confirm('Etes vous sûr ?')">Supprimer le compte</a>
+            <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary ms-1"><i class="fa-sharp fa-pencil"></i> Editer le compte</a>
+            <a href="{{ route("user.delete", $user->id) }}" class="btn btn-outline-danger ms-1" onclick="return confirm('Etes vous sûr ?')"><i class="fa-sharp fa-trash"></i> Supprimer le compte</a>
           </div>
         </div>
       </div>
