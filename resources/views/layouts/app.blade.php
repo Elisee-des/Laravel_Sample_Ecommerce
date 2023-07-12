@@ -36,7 +36,7 @@
                     @endif  --}}
 
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">@yield('soustitre')</h1>
+                        <h2 class="mt-4">@yield('soustitre')</h2>
                         @yield('contents')
                     </div>
                 </main>

@@ -1,92 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Petit Ecommerce</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{{ asset("assets_home/assets/favicon.ico") }}" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset("assets_home/css/styles.css") }}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{{ route("home") }}">Petit Ecommerce</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route("home") }}">Home</a></li>
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> --}}
-                    </ul>
-                    <form class="d-flex">
-                            <a class="btn btn-outline-dark" aria-current="page" href="{{ route("login.index") }}">Connexion</a>
-                            <a class="btn btn-outline-dark" aria-current="page" href="{{ route("register.index") }}">Inscription</a>
-                        </button>
-                    </form>
-                </div>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Petit Ecommerce</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{{ asset("assets_home/css/bootstrap.min.css") }}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{{ asset("assets_home/css/style.css") }}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{{ asset("assets_home/css/responsive.css") }}">
+      <!-- fevicon -->
+      <link rel="icon" href={{ asset("assets_home/images/fevicon.png") }}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{{ asset("assets_home/css/jquery.mCustomScrollbar.min.css") }}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+      <!-- font awesome -->
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--  -->
+      <!-- owl stylesheets -->
+      <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset("assets_home/css/owl.carousel.min.css") }}">
+      <link rel="stylesoeet" href="{{ asset("assets_home/css/owl.theme.default.min.css") }}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <!-- banner bg main start -->
+      <div class="banner_bg_main">
+         <!-- header top section start -->
+         <div class="container">
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul>
+                           <li><a href="#">Connexion</a></li>
+                           <li><a href="#">Inscription</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Petit Ecommerce</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Avec gestion des categories, utilisateurs, et produits</p>
-                </div>
+         </div>
+         <!-- header top section start -->
+         <!-- logo section start -->
+         <div class="logo_section">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="logo"><h3>Petit Ecommerce</h3></a></div>
+                  </div>
+               </div>
             </div>
-        </header>
-        <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    @foreach ($products as $product)
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/images/{{ $product->image }}" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ $product->name }}</h5>
-                                    <!-- Product price-->
-                                    {{ $product->prix }} fcfa
-                                    <h5 class="fw-bolder">{{ $product->categorie->name }}</h5>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                {{-- <h5 class="fw-bolder">{{ $product->categorie->name }}</h5> --}}
-
-                                {{-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div> --}}
-                            </div>
+         </div>
+         <!-- logo section end -->
+         <!-- header section start -->
+         <div class="header_section">
+            <div class="container">
+               <div class="containt_main">
+                  {{-- <div id="mySidenav" class="sidenav">
+                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                     <a href="index.html">Home</a>
+                     <a href="fashion.html">Fashion</a>
+                     <a href="electronic.html">Electronic</a>
+                     <a href="jewellery.html">Jewellery</a>
+                  </div> --}}
+                  {{-- <span class="toggle_icon" onclick="openNav()"><img src="{{ asset("assets_home/images/toggle-icon.png") }}"></span> --}}
+                  <div class="dropdown">
+                     {{-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                     </div> --}}
+                  </div>
+                  <div class="main">
+                     <!-- Another variation with a button -->
+                     <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Faire une recherche">
+                        <div class="input-group-append">
+                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                           <i class="fa fa-search"></i>
+                           </button>
                         </div>
-                    </div>
-                    @endforeach
-                </div>
+                     </div>
+                  </div>
+                  <div class="header_box">
+                     <div class="lang_box ">
+                        {{-- <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <img src="{{ asset("assets_home/images/flag-uk.png") }}" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a> --}}
+                        {{-- <div class="dropdown-menu ">
+                           <a href="#" class="dropdown-item">
+                           <img src="{{ asset("assets_home/images/flag-france.png") }}" class="mr-2" alt="flag">
+                           French
+                           </a>
+                        </div> --}}
+                     </div>
+                     {{-- <div class="login_menu">
+                        <ul>
+                           <li><a href="#">
+                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                              <span class="padding_10">Cart</span></a>
+                           </li>
+                           <li><a href="#">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Cart</span></a>
+                           </li>
+                        </ul>
+                     </div> --}}
+                  </div>
+               </div>
             </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{{ asset("assets_home/js/scripts.js") }}"></script>
-    </body>
+         </div>
+         <!-- header section end -->
+         <!-- banner section start -->
+         <div class="banner_section layout_padding">
+            <div class="container">
+               <div id="my_slider" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Faite <br>vos achat</h1>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Trouvé <br>ce qu'il vous faut</h1>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <h1 class="banner_taital">Acheté <br>facilement vos produits</h1>
+                           </div>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+                  </a>
+                  <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <!-- banner section end -->
+      </div>
+      <!-- banner bg main end -->
+      <!-- fashion section start -->
+      @foreach ($categories as $categorie)
+         <div class="fashion_section">
+            <div id="main_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="container">
+                        <h1 class="fashion_taital">{{ $categorie->name }}</h1>
+                        <div class="fashion_section_2">
+                           <div class="row">
+                              @foreach ((array)$categorie as $product)
+                              <div class="col-lg-4 col-sm-4">
+                                 <div class="box_main">
+                                    <h4 class="shirt_text">{{ $product->name }}</h4>
+                                    <p class="price_text">Prix  <span style="color: #262626;">{{ $product->prix }}</span></p>
+                                    <div class="tshirt_img"><img src="/images/{{ $product->image }}"></div>
+                                    <div class="btn_main">
+                                       {{-- <div class="buy_bt"><a href="#">{{ $product->name }}</a></div> --}}
+                                       <div class="seemore_bt"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                              @endforeach
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+               <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+               <i class="fa fa-angle-right"></i>
+               </a>
+            </div>
+         </div>
+      @endforeach
+
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
+            <div class="input_bt">
+               <input type="text" class="mail_bt" placeholder="Votre email" name="Your Email">
+               <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscrire </a></span>
+            </div>
+            <div class="footer_menu">
+               <ul>
+                  <li><a href="#">Best Sellers</a></li>
+                  <li><a href="#">Gift Ideas</a></li>
+                  <li><a href="#">New Releases</a></li>
+                  <li><a href="#">Today's Deals</a></li>
+                  <li><a href="#">Customer Service</a></li>
+               </ul>
+            </div>
+            <div class="location_main">Besoin d'aide ? contacté : <a href="#">25 </a></div>
+         </div>
+      </div>
+      
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
+         </div>
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="{{ asset("assets_home/js/jquery.min.js") }}"></script>
+      <script src="{{ asset("assets_home/js/popper.min.js") }}"></script>
+      <script src="{{ asset("assets_home/js/bootstrap.bundle.min.js") }}"></script>
+      <script src="{{ asset("assets_home/js/jquery-3.0.0.min.js") }}"></script>
+      <script src="{{ asset("assets_home/js/plugin.js") }}"></script>
+      <!-- sidebar -->
+      <script src="{{ asset("assets_home/js/jquery.mCustomScrollbar.concat.min.js") }}"></script>
+      <script src="{{ asset("assets_home/js/custom.js") }}"></script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidenav").style.width = "250px";
+         }
+         
+         function closeNav() {
+           document.getElementById("mySidenav").style.width = "0";
+         }
+      </script>
+   </body>
 </html>

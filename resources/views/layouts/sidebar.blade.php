@@ -33,7 +33,7 @@
             <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
                 data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="layout-static.html">Aministrateurs</a>
+                    {{-- <a class="nav-link" href="layout-static.html">Aministrateurs</a> --}}
                     <a class="nav-link" href="{{ route("user.index") }}">Clients</a>
                 </nav>
             </div>
@@ -46,7 +46,7 @@
             </a>
             <a class="nav-link collapsed" href="{{ route("profil.parametre") }}" >
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-sliders"></i></div>
-                Paramètre
+                Edition du compte
             </a>
             
         </div>

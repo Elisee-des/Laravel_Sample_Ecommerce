@@ -34,7 +34,7 @@
               <p class="text-muted mb-1">{{ $user->profession }}</p>
               <p class="text-muted mb-4">{{ $user->adress }}</p>
               <div class="d-flex justify-content-center mb-2">
-                <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary ms-1">Faire une modificaion</a>
+                {{-- <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary ms-1">Faire une modificaion</a> --}}
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
                   @if ($user->phone != "")
                   <p class="text-muted mb-0">{{ $user->phone }}</p>
                   @else
-                  <p class="text-muted mb-0"><a href="{{ route("profil.parametre") }}">Veuillez mettre à jour</a></p>
+                  <p class="text-muted mb-0"><a >Aucun renseingnement</a></p>
                   @endif
                 </div>
               </div>
@@ -97,7 +97,7 @@
                   @if ($user->adress != '')
                   <p class="text-muted mb-0">{{ $user->adress }}</p>
                   @else
-                  <p class="text-muted mb-0"><a href="{{ route("profil.parametre") }}">Veuillez mettre à jour</a></p>
+                  <p class="text-muted mb-0"><a >Aucun renseingnement</a></p>
                   @endif
                 </div>
               </div>
@@ -110,11 +110,16 @@
                   @if ($user->profession != "")
                   <p class="text-muted mb-0">{{ $user->profession }}</p>
                   @else
-                  <p class="text-muted mb-0"><a href="{{ route("profil.parametre") }}">Veuillez mettre à jour</a></p>
+                  <p class="text-muted mb-0"><a >Aucun renseingnement</a></p>
                   @endif
                 </div>
               </div>
             </div>
+
+          </div>
+          <div class="d-flex justify-content-center mb-2">
+            <a href="{{ route("user.edit", $user->id) }}" class="btn btn-outline-primary ms-1">Editer le compte</a>
+            <a href="{{ route("user.delete", $user->id) }}" class="btn btn-outline-danger ms-1" onclick="return confirm('Etes vous sûr ?')">Supprimer le compte</a>
           </div>
         </div>
       </div>

@@ -17,16 +17,6 @@
           </nav>
         </div>
       </div>
-
-      {{-- @if (Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}</div>       
-      @endif
-
-      @if (Session::has('error'))
-      <div class="alert alert-danger" role="alert">
-          {{ Session::get('error') }}</div>       
-      @endif --}}
   
       <div class="row">
         <div class="col-lg-4">
@@ -42,9 +32,7 @@
               <h5 class="my-3">{{ auth()->user()->name }}</h5>
               <p class="text-muted mb-1">{{ auth()->user()->profession }}</p>
               <p class="text-muted mb-4">{{ auth()->user()->adress }}</p>
-              <div class="d-flex justify-content-center mb-2">
-                <a href="{{ route("profil.parametre") }}" type="button" class="btn btn-outline-primary ms-1">Mettre à jour</a>
-              </div>
+              
             </div>
           </div>
           
@@ -124,6 +112,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="d-flex justify-content-center mb-2">
+            <a href="{{ route("profil.parametre") }}" type="button" class="btn btn-outline-primary ms-1">Editer mon compte</a>
           </div>
         </div>
       </div>

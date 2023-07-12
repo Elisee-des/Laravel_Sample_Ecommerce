@@ -32,7 +32,7 @@
                 <input type="text" name="name" class="form-control" placeholder="Nom de la categorie à creé" value="{{ $categorie->name }}">
               </div>
               <div class="col-1">
-                <button type="submit" class="form-control btn btn-outline-primary">Creer</button>
+                <button type="submit" class="form-control btn btn-outline-primary">Editer</button>
               </div>
             </div>
         </div>

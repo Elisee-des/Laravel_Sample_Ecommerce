@@ -2,10 +2,10 @@
 
 @section('title', "Liste des produits de la categorie $categorie->name")
 
-@section("soustitre", "Liste des produits de la categorie $categorie->name")
+@section("soustitre", "")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="">
   <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -21,15 +21,55 @@
 
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Liste des produits</h1>
+        <h1 class="mb-0"></h1>
         <div>
-          <a href="{{ route("products.index", $categorie->id) }}" class="btn btn-primary">Ajouter un produit</a>
+          {{-- <a href="{{ route("products.index", $categorie->id) }}" class="btn btn-primary">Ajouter un produit</a> --}}
         </div>
       </div>
-      <hr>
+
       
       <div class="container">
-      <br>
+        <div class="row">
+          <div class="col-7">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nom de la categorie</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p class="text-muted mb-0">
+                      {{ $categorie->name }}
+                    </p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Date de creation</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ $categorie->created_at }}</p>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Action</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">
+                      <a href="{{ route("categorie.destroy", $categorie->id) }}" class="btn btn-danger" onclick="return confirm('Etes vous sûr ?')">Supprimer cette categorie</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <h4>Produits associés</h4>
         <div class="card p-0">
           <div class="card-body">
 
@@ -49,9 +89,11 @@
                     <thead>
                         <tr>
                             <th>Noms</th>
+                            <th>Images</th>
                             <th>Prix</th>
                             <th>Descriptions</th>
-                            <th>Action</th>
+                            <th>Date d'ajout</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -60,9 +102,11 @@
                       @foreach ($products as $product )
                           <tr>
                               <td>{{ $product->name }}</td>
+                              <td><img src="/images/{{ $product->image }}" style="width:40px;" alt=""></td>
                               <td>{{ $product->prix }}</td>
                               <td>{{ $product->description }}</td>
-                              <td>
+                              <td>{{ $product->created_at }}</td>
+                              {{-- <td>
                                   <div class="btn-group" role="group">
                                       <button class="btn btn-outline-dark"><a href="{{ route("product.edit", ["idCat" => $categorie->id, "id" => $product->id]) }}" class="btn">Editer</a></button>
                                       <form action="{{ route("product.delete", ["idCat" => $categorie->id, "id" => $product->id]  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
@@ -72,13 +116,13 @@
                                       </form>
                                       <button class="btn btn-outline-warning"><a href="{{ route("product.show", ["idCat" => $categorie->id, "id" => $product->id]) }}" class="btn">Detail</a></button>
                                   </div>
-                              </td>
+                              </td> --}}
                           </tr>
                       @endforeach
       
                       @else
                           <tr>
-                              <td class="text-center" colspan="5">Aucune product trouvé</td>
+                              <td class="text-center" colspan="5">Aucune produit trouvé</td>
                           </tr>
                       @endif
                       </tbody>

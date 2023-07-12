@@ -21,12 +21,12 @@
 
     <div class="row">
       <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Liste des categories</h1>
+        <h1 class="mb-0"></h1>
         <div>
           <a href="{{ route("categorie.create") }}" class="btn btn-primary">Ajouter une categorie</a>
         </div>
       </div>
-      <hr>
+      {{-- <hr> --}}
       
       <div class="container">
       <br>
@@ -40,12 +40,12 @@
               </div>
           </form> --}}
           
-          <div class="table-responsive">
+          {{-- <div class="table-responsive">
             
             <br>
             @if (isset($categories))
                 
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Noms</th>
@@ -63,7 +63,7 @@
                                       <button class="btn btn-outline-dark"><a href="{{ route("categorie.edit", $categorie->id) }}" class="btn">Editer</a></button>
                                       <form action="{{ route("categorie.destroy", $categorie->id  ) }}" method="POST" type="button" class="btn btn-danger" onclick="">
                                         @csrf
-                                        @method('GET')
+                                        @method('DELETE')
                                         <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Supprimer</button>
                                       </form>
                                       <button class="btn btn-outline-primary"><a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn">Produits</a></button>
@@ -78,15 +78,54 @@
                           </tr>
                       @endif
                       </tbody>
-                  </table>
+                </table>
                   
                   <div class="pagination-block">
-                   {{-- {{  $categories->links('layouts.paginationlinks')  }} --}}
-                   {{-- {{  $categories->links()  }} --}}
+                     $categories->links('layouts.paginationlinks')  
+                     $categories->links()  
                   </div>
                   @endif
               
-            </div>
+          </div> --}}
+
+            {{-- <div class="card"> --}}
+              <div class="card-body p-1">
+                {{-- <h5 class="card-title">Bordered Table</h5> --}}
+                <!-- Bordered Table -->
+                
+                <table class="table table-bordered ">
+                  <thead>
+                    <tr>
+                      <th scope="col">Noms</th>
+                      <th scope="col" class="pull-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @if ($categories->count() > 0)
+
+                      @foreach ($categories as $categorie )
+                    <tr>
+                      <td>{{ $categorie->name }}</td>
+                      <td class="pull-right">
+                        <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary">Editer</a>
+                        <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark">Detail</a>
+
+                      </td>
+                    </tr>
+                    @endforeach
+      
+                    @else
+                        <tr>
+                            <td class="text-center" colspan="5">Aucune categorie trouvé</td>
+                        </tr>
+                    @endif
+                    
+                  </tbody>
+                </table>
+                <!-- End Bordered Table -->
+  
+              </div>
+            {{-- </div> --}}
         </div>
         </div>
       </div>

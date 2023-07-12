@@ -14,14 +14,13 @@ class DashboardController extends Controller
         $categories = Categorie::all();
         $users = User::all();
         $products = Product::all();
-
-        $cpt = 0;
-        foreach ($users as $user) {
-            if($user->role == 'admin')
-            {
-                $ctpAdmin = $cpt + 1;
-            }
-        }
+        $ctpAdmin = User::where('role','admin')->get();
+        // foreach ($users as $user) {
+        //     if($user->role == 'admin')
+        //     {
+        //         $ctpAdmin = $cpt + 1;
+        //     }
+        // }
 
         return view("dashboard", compact("categories", "users", "products", "ctpAdmin"));
     }

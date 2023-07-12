@@ -22,7 +22,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <h1 class="mb-0">Liste des produits</h1>
         <div>
-          <a href="{{ route("products.create.index") }}" class="btn btn-primary">Ajouter un produit</a>
+          {{-- <a href="{{ route("products.create.index") }}" class="btn btn-primary">Ajouter un produit</a> --}}
         </div>
       </div>
       <hr>
@@ -64,7 +64,7 @@
                               <td>{{ $product->prix }}</td>
                               <td>{{ $product->description }}</td>
                               <td>
-                                <div class="btn-group" role="group">
+                                {{-- <div class="btn-group" role="group">
                                   <button class="btn btn-outline-dark"><a href="" class="btn">Editer</a></button>
                                   <form action="" method="POST" type="button" class="btn btn-danger" onclick="">
                                     @csrf
@@ -72,14 +72,14 @@
                                     <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Supprimer</button>
                                   </form>
                                   <button class="btn btn-outline-primary"><a href="" class="btn">Produits</a></button>
-                              </div>
+                              </div> --}}
                               </td>
                           </tr>
                       @endforeach
       
                       @else
                           <tr>
-                              <td class="text-center" colspan="5">Aucun utilisateur trouvé</td>
+                              <td class="text-center" colspan="5">Aucun produit trouvé</td>
                           </tr>
                       @endif
                       </tbody>
