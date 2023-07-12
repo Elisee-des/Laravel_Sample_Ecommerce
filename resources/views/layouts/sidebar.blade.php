@@ -24,19 +24,10 @@
             </div>
 
             <div class="sb-sidenav-menu-heading">Gestion des utilisateurs</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+            <a class="nav-link collapsed" href="{{ route("user.index") }}" >
                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                 Utilisateurs
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
-            <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
-                data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    {{-- <a class="nav-link" href="layout-static.html">Aministrateurs</a> --}}
-                    <a class="nav-link" href="{{ route("user.index") }}">Clients</a>
-                </nav>
-            </div>
             @endif
 
             <div class="sb-sidenav-menu-heading">Personnel</div>

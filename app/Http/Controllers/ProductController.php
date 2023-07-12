@@ -213,7 +213,7 @@ class ProductController extends Controller
 
         Validator::make($request->all(), [
             'name' => 'required',
-            'prix' => 'required',
+            'prix' => 'required|integer',
             'description' => 'required',
             'image' => [
                 'required',                
