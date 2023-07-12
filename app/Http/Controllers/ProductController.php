@@ -207,10 +207,17 @@ class ProductController extends Controller
         return view("products.create", compact("categories"));
     }
 
+    public function editProduct($id)
+    {
+        $categories = Categorie::all();
+        $product = Product::find($id);
+
+        return view("products.edit", compact("product", "categories"));
+    }
+
     public function storeProduct(Request $request)
     {
-        dd($request);
-
+        $idCat = $request->input("categorie_id");
         Validator::make($request->all(), [
             'name' => 'required',
             'prix' => 'required|integer',
@@ -228,15 +235,68 @@ class ProductController extends Controller
         $file = $request->file("image");
         $imageName = time().'_'.$file->getClientOriginalName();
         $file->move(\public_path("images/"), $imageName);
+
         
         $product = Product::create([
             'name' => $request->name,
             'prix' => $request->prix,
             'description' => $request->description,
             'image' => $imageName,
-            // 'categorie_id' => $id,
+            'categorie_id' => $idCat,
         ]);
 
         return redirect()->route("products.create.index")->with('success', "Produit ajouté avec success");
+    }
+
+    public function updateProduct(Request $request, $id)
+    {
+        $idCat = $request->input("categorie_id");
+        $product = Product::find($id);
+        $imageFile = $product->image;
+
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'prix' => 'required|integer',
+            'description' => 'required',
+            'image' => [
+                File::image()
+                ->min(102)
+                ->max(12 * 1024)
+                ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
+                ],
+            ]
+        )->validate();
+        
+        $file = $request->file("image");
+        if ($file != '') {
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(\public_path("images/"), $imageName);
+
+            $product->update([
+                'name' => $request->name,
+                'prix' => $request->prix,
+                'description' => $request->description,
+                'image' => $imageName,
+                'categorie_id' => $idCat,
+            ]);
+            
+            $product->save();
+            
+            return redirect()->route('product.index')->with('success', "Produit edité avec succes");
+        }
+
+        $file = $imageFile;
+        
+        $product->update([
+            'name' => $request->name,
+            'prix' => $request->prix,
+            'description' => $request->description,
+            'image' => $file,
+            'categorie_id' => $idCat,
+        ]);
+
+        $product->save();
+
+        return redirect()->route('product.index')->with('success', "Produit edité avec success");
     }
 }

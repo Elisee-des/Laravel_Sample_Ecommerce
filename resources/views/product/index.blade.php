@@ -22,11 +22,12 @@
       <div class="d-flex align-items-center justify-content-between">
         <h1 class="mb-0"></h1>
         <div>
-          {{-- <a href="{{ route("products.create.index") }}" class="btn btn-primary">Ajouter un produit</a> --}}
+          <a href="{{ route("products.create.index") }}" class="btn btn-primary"><i class="fa-sharp fa-plus"></i> Ajouter un produit</a>
         </div>
       </div>
+
       <hr>
-      
+
       <div class="container">
       <br>
         <div class="card p-0">
@@ -40,7 +41,7 @@
           </form>
           
           <div class="table-responsive">
-            
+
             <br>
             @if (isset($products))
                 
@@ -60,19 +61,13 @@
                       @foreach ($products as $product )
                           <tr>
                               <td>{{ $product->name }}</td>
-                              <td><img src="/images/{{ $product->image }}" style="width: 80px;" alt=""></td>
+                              <td class="text-center"><img src="/images/{{ $product->image }}" style="width: 30px;" alt=""></td>
                               <td>{{ $product->prix }}</td>
                               <td>{{ $product->description }}</td>
                               <td>
-                                {{-- <div class="btn-group" role="group">
-                                  <button class="btn btn-outline-dark"><a href="" class="btn">Editer</a></button>
-                                  <form action="" method="POST" type="button" class="btn btn-danger" onclick="">
-                                    @csrf
-                                    @method('GET')
-                                    <button class="btn btn-danger m-0" onclick="return confirm('Etes vous sûr ?')">Supprimer</button>
-                                  </form>
-                                  <button class="btn btn-outline-primary"><a href="" class="btn">Produits</a></button>
-                              </div> --}}
+                                <a href="{{ route("products.edit.index", $product->id) }}" class="btn btn-outline-primary"><i class="fa-sharp fa-pencil"></i> Editer</a>
+                                <a href="{{ route("products.show.index", $product->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Detail</a>
+                                  
                               </td>
                           </tr>
                       @endforeach

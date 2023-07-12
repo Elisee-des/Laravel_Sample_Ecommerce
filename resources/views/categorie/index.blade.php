@@ -5,7 +5,7 @@
 @section("soustitre", "Gestion des categories")
 
 @section('contents')
-<section style="background-color: ;">
+<section >
   <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -177,7 +177,7 @@
                       <td class="pull-right">
                         {{-- <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary" ata-toggle="modal" data-target="#modalEditionCategorie"><i class="fa-sharp fa-pencil"></i> Editer</a> --}}
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditerCategorie{{ $categorie->id }}">
-                          Éditer
+                          <i class="fa-sharp fa-plus"></i> Éditer
                         </button>
                         <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Detail</a>
 

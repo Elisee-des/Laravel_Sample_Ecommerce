@@ -82,9 +82,10 @@ Route::middleware('auth')->group(function() {
         Route::get('/index', [ProductController::class, 'index'])->name('product.index');
         Route::get('/create', [ProductController::class, 'createProduct'])->name('products.create.index');
         Route::post('/store', [ProductController::class, 'storeProduct'])->name('products.store.index');
-        Route::get('/edit', [ProductController::class, 'editProduct'])->name('products.edit.index');
-        Route::put('/edit', [ProductController::class, 'updateProduct'])->name('products.upadte.index');
-        Route::delete('/delete', [ProductController::class, 'deleteProduct'])->name('products.delete.index');
+        Route::get('/edit/{id}', [ProductController::class, 'editProduct'])->name('products.edit.index');
+        Route::put('/update/{id}', [ProductController::class, 'updateProduct'])->name('products.update.index');
+        Route::get('/show/{id}', [ProductController::class, 'showProduct'])->name('products.show.index');
+        Route::get('/delete/{id}', [ProductController::class, 'deleteProduct'])->name('products.delete.index');
     });
 
 

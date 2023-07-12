@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', "Ajout de produit")
+@section('title', "Edition du produit")
 
-@section("soustitre", "Ajout de produit")
+@section("soustitre", "Edition du produit")
 
 @section('contents')
 <br><br>
@@ -15,15 +15,16 @@
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ route("dashboard") }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route("product.index") }}">Liste des produits</a></li>
+            <li class="breadcrumb-item active"><a href="">{{ $product->name }}</a></li>
           </ol>
         </nav>
       </div>
     </div>
 
     <div class="card p-3">
-      <form action="{{ route("products.store.index") }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route("products.update.index", $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('POST')
+        @method('PUT')
 
         @if ($errors->any())
               <div class="alert alert-danger">
@@ -38,15 +39,15 @@
         <div class="card p-3 mb-2">
             <div class="row">
               <div class="col-6">
-                <input type="text" name="name" @error('name')is-invalid @enderror class="form-control mb-2" placeholder="Nom du produit" value="">
+                <input type="text" name="name" @error('name')is-invalid @enderror class="form-control mb-2" placeholder="Nom du produit" value="{{ $product->name }}">
                     @error('name')
                       <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-                <input type="text" name="prix" @error('prix')is-invalid @enderror class="form-control mb-2" placeholder="Prix du produit" value="">
+                <input type="text" name="prix" @error('prix')is-invalid @enderror class="form-control mb-2" placeholder="Prix du produit" value="{{ $product->prix }}">
                     @error('prix')
                       <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-                <textarea type="text" name="description" @error('description')is-invalid @enderror class="form-control mb-2" placeholder="Description du produit" value=""></textarea>
+                <textarea type="text" name="description" @error('description')is-invalid @enderror class="form-control mb-2" placeholder="Description du produit" value="">{{ $product->description }}</textarea>
                     @error('description')
                       <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -54,7 +55,7 @@
             <div class="col-6">
                 <label for="" class="form-label">Choisir la categorie</label>
                 <select class="form-select mb-3" aria-label="Default select example" name="categorie_id">
-                  <option value="" selected>Cliquez pour choisir</option>
+                  <option value="{{ $product->categorie->id }}" selected>{{ $product->categorie->name }}</option>
                   @foreach ($categories as $categorie)
                       <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
                   @endforeach
@@ -70,7 +71,7 @@
         </div>
         <div class="row">
             <div class="d-gird text-center">
-              <button class=" text-center btn btn-primary">Creér le produit</button>
+              <button class=" text-center btn btn-primary">Editer le produit</button>
             </div>
           </div>
       </form>

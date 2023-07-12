@@ -5,7 +5,7 @@
 @section("soustitre", "Paramètre")
 
 @section('contents')
-<section style="background-color: #eee;">
+<section style="background-color:">
     <div class="container py-5">
       <div class="row">
         <div class="col">
