@@ -215,6 +215,14 @@ class ProductController extends Controller
         return view("products.edit", compact("product", "categories"));
     }
 
+    public function showProduct($id)
+    {
+        $categories = Categorie::all();
+        $product = Product::find($id);
+
+        return view("products.show", compact("product", "categories"));
+    }
+
     public function storeProduct(Request $request)
     {
         $idCat = $request->input("categorie_id");
@@ -298,5 +306,14 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('product.index')->with('success', "Produit edité avec success");
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', "Produit supprimé avec succes");
     }
 }
