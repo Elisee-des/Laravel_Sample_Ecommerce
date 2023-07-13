@@ -49,10 +49,11 @@
                     <thead>
                         <tr>
                             <th>Noms</th>
-                            <th>Image</th>
+                            <th>Images</th>
                             <th>Prix</th>
+                            <th>Categories</th>
                             <th>Descriptions</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,6 +64,7 @@
                               <td>{{ $product->name }}</td>
                               <td class="text-center"><img src="/images/{{ $product->image }}" style="width: 30px;" alt=""></td>
                               <td>{{ $product->prix }}</td>
+                              <td>{{ $product->categorie->name }}</td>
                               <td>{{ $product->description }}</td>
                               <td>
                                 <a href="{{ route("products.edit.index", $product->id) }}" class="btn btn-outline-primary"><i class="fa-sharp fa-pencil"></i> Editer</a>

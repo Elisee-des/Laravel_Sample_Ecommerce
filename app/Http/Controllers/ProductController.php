@@ -69,7 +69,7 @@ class ProductController extends Controller
             'image' => [
                 'required',                
                 File::image()
-                ->min(102)
+                ->min(10)
                 ->max(12 * 1024)
                 ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
                 ],
@@ -160,6 +160,15 @@ class ProductController extends Controller
         $file = $request->file("image");
         
         if ($file != '') {
+            Validator::make($request->all(), [
+                'image' => [
+                    File::image()
+                    ->min(10)
+                    ->max(12 * 1024)
+                    ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
+                    ],
+                ]
+            )->validate();
             $imageName = time().'_'.$file->getClientOriginalName();
     
             $file->move(\public_path("images/"), $imageName);
@@ -233,7 +242,7 @@ class ProductController extends Controller
             'image' => [
                 'required',                
                 File::image()
-                ->min(102)
+                ->min(10)
                 ->max(12 * 1024)
                 ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
                 ],
@@ -268,7 +277,7 @@ class ProductController extends Controller
             'description' => 'required',
             'image' => [
                 File::image()
-                ->min(102)
+                ->min(10)
                 ->max(12 * 1024)
                 ->dimensions(Rule::dimensions()->maxWidth(10000)->maxHeight(5000)),
                 ],
@@ -315,5 +324,12 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product.index')->with('success', "Produit supprimé avec succes");
+    }
+
+    public function showProductHome($id)
+    {
+        $product = Product::find($id);
+
+        return view("product/home/show", compact("product"));
     }
 }

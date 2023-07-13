@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
 
         for ($i=0; $i < 20; $i++) { 
 
-            $prix = random_int(200, 30020);
+            $prix = random_int(2500, 100000);
 
             $description = "Description du produit";
 

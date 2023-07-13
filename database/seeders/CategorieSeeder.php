@@ -15,7 +15,15 @@ class CategorieSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Informatique','Menager', 'Mecanique', 'React Native', 'Flutter', "Machine Learning"];
+        $categories = [
+            'Informatique',
+            'Man & Woman Fashion', 
+            'Comestique', 
+            'Electronic', 
+            'Accessories de beauté', 
+            'Flutter',
+            'Flutter',
+            "Machine Learning"];
 
         foreach($categories as $category)
         {

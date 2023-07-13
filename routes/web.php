@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name("home");
-
+Route::get('/show-product/{id}', [ProductController::class, 'showProductHome'])->name('products.home.show');
 
 Route::controller(AuthController::class)->group(function() {
     Route::get('register', 'register')->name("register.index");
