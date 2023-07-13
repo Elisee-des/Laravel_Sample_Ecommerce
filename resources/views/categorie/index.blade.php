@@ -72,24 +72,18 @@
         <div class="card p-0">
           <div class="card-body">
 
-          {{-- <form action="" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
-              <div class="input-group">
-                  <input class="form-control" type="text" placeholder="Search for..." name="query" value="" />
-                  <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-              </div>
-          </form> --}}
-          
-          {{-- <div class="table-responsive">
             
+            {{-- <div class="table-responsive">
+              
             <br>
             @if (isset($categories))
                 
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Noms</th>
-                            <th>Action</th>
-                        </tr>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Noms</th>
+                  <th>Action</th>
+                </tr>
                     </thead>
                     <tbody>
                       @if ($categories->count() > 0)
@@ -120,7 +114,7 @@
                 </table>
                   
                   <div class="pagination-block">
-                     $categories->links('layouts.paginationlinks')  
+                    $categories->links('layouts.paginationlinks')  
                      $categories->links()  
                   </div>
                   @endif
@@ -129,10 +123,16 @@
 
             {{-- <div class="card"> --}}
               <div class="card-body p-1">
+                    <form action="{{ route("product.search") }}" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for..." name="query" value="" />
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
                 {{-- <h5 class="card-title">Bordered Table</h5> --}}
                 <!-- Bordered Table -->
                 
-                <table class="table table-bordered ">
+                <table class="table table-bordered" id="myTable">
                   <thead>
                     <tr>
                       <th scope="col">Noms</th>
@@ -194,6 +194,7 @@
                   </tbody>
                 </table>
                 <!-- End Bordered Table -->
+                {{ $categories->links('layouts.paginationlinks') }}
   
               </div>
             {{-- </div> --}}

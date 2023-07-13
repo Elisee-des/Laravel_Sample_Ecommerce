@@ -69,7 +69,7 @@
                     @endif
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Votre Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror required >
+                      <input type="email" name="email" class="form-control" id="yourEmail" placeholder="Email" @error('email')is-invalid @enderror required >
                       {{-- <div class="invalid-feedback">Email obligatoire</div> --}}
                       @error('email')
                           <span class="invalid-feedback">{{ $message }}</span>
@@ -78,7 +78,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Votre Mot De Passe</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" @error('password')is-invalid @enderror required>
+                      <input type="password" name="password" placeholder="Mot de passe" class="form-control" id="yourPassword" @error('password')is-invalid @enderror required>
                       {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
                       @error('password')
                           <span class="invalid-feedback">{{ $message }}</span>

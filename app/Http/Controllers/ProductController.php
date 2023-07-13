@@ -20,24 +20,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
-        if ($request->has('query')) {
-            $search_text = $request->input('query');
-            $products = DB::table('products')
-            ->where('name', 'LIKE', '%'.$search_text.'%')
-            ->orWhere('prix', 'LIKE', '%'.$search_text.'%')
-            ->orWhere('description', 'LIKE', '%'.$search_text.'%')
-            ->paginate(10);
-            
-            return view("product.index", compact("products"));
-
-        } else {
-            
-            $products = Product::all();
-            return view("product.index", compact("products"));
-
-        }
-
+        $products = Product::paginate(10);
+        return view("product.index", compact("products"));
     }
     
 
@@ -112,23 +96,37 @@ class ProductController extends Controller
         return view("product/show", compact("categorie", "product"));
     }
 
-    public function searchProduct(Request $request, $id)
+    public function searchProduct(Request $request)
     {
-        $categorie = Categorie::find($id);
 
         if ($request->has('query')) {
             $search_text = $request->input('query');
-            $products = DB::table('products')
+            $categories = DB::table('categories')
             ->where('name', 'LIKE', '%'.$search_text.'%')
-            ->orWhere('prix', 'LIKE', '%'.$search_text.'%')
-            ->orWhere('description', 'LIKE', '%'.$search_text.'%')
-            ->paginate(10);
+            ->paginate(8);
     
-            return view("categorie/showproductbycategorie", compact("products", "categorie"));
+            return view("categorie.index", compact("categories"));
         } else {
            
-            return view("product.index"); 
+            return view("categorie.index"); 
         }
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $search = $request->search;
+
+        $products = Product::where(function($query) use ($search){
+            $query->where('name', 'like', "%$search%")
+            ->orWhere('prix', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%");
+            })
+            ->orWhereHas('categorie', function($query) use ($search){
+                $query->where('name', 'like', "%$search%");
+            })
+            ->paginate(8);
+        
+        return view("product.index", compact('products'));
     }
 
     /**
@@ -329,9 +327,9 @@ class ProductController extends Controller
     public function showProductHome($id)
     {
         $product = Product::find($id);
-        $categoriess = Categorie::all();
+        $categories = Categorie::all();
 
-        return view("product/home/show", compact("product", "categoriess"));
+        return view("product/home/show", compact("product", "categories"));
     }
 
 

@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/product/edit/{idCat}/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('/product/update/{idCat}/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::get('/product/show/{idCat}/{id}', [ProductController::class, 'show'])->name('product.show');
-        Route::get('/product/search/{idCat}', [ProductController::class, 'searchProduct'])->name('product.search');
+        Route::get('/product/search', [ProductController::class, 'searchProduct'])->name('product.search');
         Route::delete('/product/delete/{idCat}/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     });
 
@@ -87,6 +87,8 @@ Route::middleware('auth')->group(function() {
         Route::put('/update/{id}', [ProductController::class, 'updateProduct'])->name('products.update.index');
         Route::get('/show/{id}', [ProductController::class, 'showProduct'])->name('products.show.index');
         Route::get('/delete/{id}', [ProductController::class, 'deleteProduct'])->name('products.delete.index');
+        Route::get('/search', [ProductController::class, 'searchProducts'])->name('products.search');
+
     });
 
 

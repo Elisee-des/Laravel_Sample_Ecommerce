@@ -69,8 +69,8 @@
                     @endif
                     
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Votre Nom</label>
-                      <input type="text" name="name" class="form-control" id="yourName" @error('name')is-invalid @enderror>
+                      <label for="yourName" class="form-label">Votre nom</label>
+                      <input type="text" name="name" placeholder="Nom" class="form-control" id="yourName" @error('name')is-invalid @enderror>
                       {{-- <div class="invalid-feedback">Nom Obligatoire</div> --}}
                       @error('name')
                           <span class="invalid-feedback">{{ $message }}</span>
@@ -78,8 +78,8 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Votre Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror>
+                      <label for="yourEmail" class="form-label">Votre email</label>
+                      <input type="email" name="email" placeholder="Email" class="form-control" id="yourEmail" @error('email')is-invalid @enderror>
                       {{-- <div class="invalid-feedback">Email obligatoire</div> --}}
                       @error('email')
                           <span class="invalid-feedback">{{ $message }}</span>
@@ -88,7 +88,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Votre Mot De Passe</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" @error('password')is-invalid @enderror>
+                      <input type="password" placeholder="Mot de passe" name="password" class="form-control" id="yourPassword" @error('password')is-invalid @enderror>
                       {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
                       @error('password')
                           <span class="invalid-feedback">{{ $message }}</span>
@@ -97,7 +97,7 @@
 
                     <div class="col-12">
                       <label for="yourPhone" class="form-label">Votre Telephone</label>
-                      <input type="phone" name="phone" class="form-control" id="yourPhone" @error('password')is-invalid @enderror>
+                      <input type="phone" name="phone" placeholder="Telephone" class="form-control" id="yourPhone" @error('password')is-invalid @enderror>
                       {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
                       @error('phone')
                           <span class="invalid-feedback">{{ $message }}</span>
@@ -106,7 +106,7 @@
 
                     <div class="col-12">
                       <label for="yourAdress" class="form-label">Votre Adress</label>
-                      <input type="adress" name="adress" class="form-control" id="yourAdress" @error('password')is-invalid @enderror>
+                      <input type="adress" name="adress" placeholder="Adress" class="form-control" id="yourAdress" @error('password')is-invalid @enderror>
                       {{-- <div class="invalid-feedback">Mot de passe Obligatoire</div> --}}
                       @error('adress')
                           <span class="invalid-feedback">{{ $message }}</span>

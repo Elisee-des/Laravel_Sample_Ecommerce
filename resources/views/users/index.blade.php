@@ -95,7 +95,7 @@
               </table>
 
               <div class="pagination-block">
-                {{-- {{ $users->links('layouts.paginationlinks') }} --}}
+                {{ $users->links('layouts.paginationlinks') }}
                 {{-- {{ $users->links() }} --}}
               </div>
               @endif

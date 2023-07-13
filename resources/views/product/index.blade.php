@@ -33,9 +33,9 @@
         <div class="card p-0">
           <div class="card-body">
 
-          <form action="{{ route("products.create.index") }}" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
+          <form action="{{ route("products.search") }}" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 mb-3">
               <div class="input-group">
-                  <input class="form-control" type="text" placeholder="Search for..." name="query" value="" />
+                  <input class="form-control" type="text" placeholder="Search for..." name="search" value="" />
                   <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
               </div>
           </form>
@@ -81,9 +81,9 @@
                       @endif
                       </tbody>
                   </table>
-                  
+
                   <div class="pagination-block">
-                   {{-- {{  $products->links('layouts.paginationlinks')  }} --}}
+                   {{  $products->links('layouts.paginationlinks')  }}
                    {{-- {{  $products->links()  }} --}}
                   </div>
             @endif
