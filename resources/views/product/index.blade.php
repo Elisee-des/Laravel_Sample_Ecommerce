@@ -84,7 +84,7 @@
                    {{-- {{  $products->links('layouts.paginationlinks')  }} --}}
                    {{-- {{  $products->links()  }} --}}
                   </div>
-                  @endif
+            @endif
               
             </div>
         </div>

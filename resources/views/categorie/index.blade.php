@@ -171,26 +171,26 @@
                               </div>
                           </div>
                       </div>
-                  </div>
-                    <tr>
-                      <td>{{ $categorie->name }}</td>
-                      <td class="pull-right">
-                        {{-- <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary" ata-toggle="modal" data-target="#modalEditionCategorie"><i class="fa-sharp fa-pencil"></i> Editer</a> --}}
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditerCategorie{{ $categorie->id }}">
-                          <i class="fa-sharp fa-plus"></i> Éditer
-                        </button>
-                        <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Detail</a>
+                    </div>
+                      <tr>
+                        <td>{{ $categorie->name }}</td>
+                        <td class="pull-right">
+                          {{-- <a href="{{ route("categorie.edit", $categorie->id) }}" class="btn btn-outline-primary" ata-toggle="modal" data-target="#modalEditionCategorie"><i class="fa-sharp fa-pencil"></i> Editer</a> --}}
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditerCategorie{{ $categorie->id }}">
+                            <i class="fa-sharp fa-plus"></i> Éditer
+                          </button>
+                          <a href="{{ route("categorie.show.products", $categorie->id) }}" class="btn btn-outline-dark"><i class="fa-sharp fa-circle-info"></i> Detail</a>
 
-                      </td>
-                    </tr>
-                    @endforeach
-      
-                    @else
-                        <tr>
-                            <td class="text-center" colspan="5">Aucune categorie trouvé</td>
-                        </tr>
-                    @endif
-                    
+                        </td>
+                      </tr>
+                      @endforeach
+        
+                      @else
+                          <tr>
+                              <td class="text-center" colspan="5">Aucune categorie trouvé</td>
+                          </tr>
+                      @endif
+                      
                   </tbody>
                 </table>
                 <!-- End Bordered Table -->
