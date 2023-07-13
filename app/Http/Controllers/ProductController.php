@@ -329,7 +329,21 @@ class ProductController extends Controller
     public function showProductHome($id)
     {
         $product = Product::find($id);
+        $categoriess = Categorie::all();
 
-        return view("product/home/show", compact("product"));
+        return view("product/home/show", compact("product", "categoriess"));
+    }
+
+
+    public function productByCategorie($id)
+    {
+        $categorie = Categorie::find($id);
+        $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.categorie_id')
+                    ->select('products.*')
+                    ->where('categories.id', '=', $id)
+                    ->get();
+
+        return view("product/home/productCategorie", compact("products", "categorie"));
     }
 }
